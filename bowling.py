@@ -5,16 +5,18 @@ def score(game):
     frame = 1
     in_first_half = True  # I should understan what is this.
     for throw in range(len(game)):
+        NEXT_THROW = throw+1
+        AFTER_NEXT_THROW = throw + 2
         result += get_value(game[throw])
         if game[throw] == '/':
             result -= last
         if frame < LAST_FRAME and get_value(game[throw]) == MAX_POINT:
             if game[throw] == '/':
-                result += get_value(game[throw+1])
+                result += get_value(game[NEXT_THROW])
             elif game[throw].lower() == 'x':
-                if game[throw+2] != '/':
-                    result += get_value(game[throw+1])
-                result += get_value(game[throw+2])
+                if game[AFTER_NEXT_THROW] != '/':
+                    result += get_value(game[NEXT_THROW])
+                result += get_value(game[AFTER_NEXT_THROW])
         frame, in_first_half = first_half(in_first_half, frame, game, throw)
         last = get_value(game[throw])
     return result
