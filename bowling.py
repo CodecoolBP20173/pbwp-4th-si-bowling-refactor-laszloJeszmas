@@ -24,10 +24,8 @@ def get_value(char):
 
 
 def bonus_score(result, frame, game, throw):
-    MAX_POINT = 10
-    LAST_FRAME = 10
-    NEXT_THROW = throw+1
-    AFTER_NEXT_THROW = throw + 2
+    MAX_POINT, LAST_FRAME = 10, 10
+    NEXT_THROW, AFTER_NEXT_THROW = throw + 1, throw + 2
     if frame < LAST_FRAME and get_value(game[throw]) == MAX_POINT:
         if game[throw] == '/':
             result += get_value(game[NEXT_THROW])
